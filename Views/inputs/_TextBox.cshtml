@@ -1,0 +1,8 @@
+﻿@{
+    ModelStateDictionary CustomModelState = (ModelStateDictionary)ViewData["ModelState"];
+    string selector = ViewData["Selector"].ToString();
+    string ErrorMessage = CustomModelState[selector]?.Errors?.FirstOrDefault()?.ErrorMessage;
+}
+
+@Html.TextBox(selector, ViewData["Value"], new { @id = ViewData["id"], @class = "form-control" + ViewData["class"] })
+@Html.ValidationMessage(selector, ErrorMessage, new { @class = "text-danger" }, null)

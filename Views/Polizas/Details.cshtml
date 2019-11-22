@@ -1,0 +1,34 @@
+﻿@model University.Models.Poliza
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Poliza</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Asegurado.NombreCompleto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asegurado.NombreCompleto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroPoliza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroPoliza)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PolizaID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

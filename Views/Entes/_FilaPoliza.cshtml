@@ -1,0 +1,20 @@
+﻿@model University.Models.Poliza
+@{
+    object idName = ViewData["id"] ?? ("Polizas_" + ViewData["index"] + "__");
+    string hidden = ViewData["id"] != null ? " hidden" : "";
+    int index = Convert.ToInt32(ViewData["index"]);
+}
+
+
+@Html.Partial("../inputs/_TextBox", null, new ViewDataDictionary(){ new KeyValuePair<string, object>("Selector", "Polizas[" + ViewData["index"] + "].NumeroPoliza"),
+                                                                    new KeyValuePair<string, object>("Value", Model.NumeroPoliza),
+                                                                    new KeyValuePair<string, object>("id", idName + "NumeroPoliza"),
+                                                                    new KeyValuePair<string, object>("class", hidden),
+                                                                    new KeyValuePair<string, object>("ModelState", ViewData.ModelState)
+})
+
+@Html.Hidden("Polizas.Index", index, new { @id = idName + "Index" })
+@Html.Hidden($"Polizas[{index}].PolizaID", Model.PolizaID, new { @id = idName + "PolizaID" })
+@Html.Hidden($"Polizas[{index}].AseguradoID", Model.AseguradoID, new { @id = idName + "AseguradoID" })
+
+@Html.ActionLink("Borrar", "DeletePolicy", new { enteID = Model.AseguradoID, polizaID = Model.PolizaID }, new { @class=hidden })
